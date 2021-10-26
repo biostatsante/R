@@ -7,220 +7,223 @@
 
 
 ######################################################################
-## Gestion de variables numériques
+## Gestion de variables numï¿½riques
 ######################################################################
-> x <- c(2523,2551,2557,2594,2600,2622,2637,2637,2663,2665)  
+x <- c(2523,2551,2557,2594,2600,2622,2637,2637,2663,2665)  
 
-> x
-[1] 2523 2551 2557 2594 2600 2622 2637 2637 2663 2665
+x
+#[1] 2523 2551 2557 2594 2600 2622 2637 2637 2663 2665
 
-> y <- c(82.7,70.5,47.7,49.1,48.6,56.4,53.6,46.8,55.9,51.4)  
+y <- c(82.7,70.5,47.7,49.1,48.6,56.4,53.6,46.8,55.9,51.4)  
 
-> ls()
-[1] "x" "y"  
+ls()
+#[1] "x" "y"  
 
-> length(x)
-[1] 10  
+length(x)
+#[1] 10  
 
-> x[5]
-[1] 2600
-
-
-######################################################################
-## Opérations sur une variable numérique
-######################################################################
-> x[5] / 1000
-[1] 2.6
-
-> x / 1000
-[1] 2.523 2.551 2.557 2.594 2.600 2.622 2.637 2.637 2.663 2.665
-
-> x2 <- x / 1000
-> x
-[1] 2523 2551 2557 2594 2600 2622 2637 2637 2663 2665
-> x2
-[1] 2.523 2.551 2.557 2.594 2.600 2.622 2.637 2.637 2.663 2.665
-
-> mean(x)
-[1] 2604.9
-
-> range(x)
-[1] 2523 2665
-> c(min(x), max(x))
-[1] 2523 2665
-> var(x)
-[1] 2376.767
-
-> sum(x)
-[1] 26049
-> sum(x^2)
-[1] 67876431
-> sum(x^2 - mean(x))
-[1] 67850382
+x[5]
+#[1] 2600
 
 
 ######################################################################
-## Gestion de variables catégorielles
+## Opï¿½rations sur une variable numï¿½rique
 ######################################################################
-> z <- c(1, 1, 2, 2, 2, 1, 1, 1, 2, 2)
-> z
-[1] 1 1 2 2 2 1 1 1 2 2
+x[5] / 1000
+#[1] 2.6
 
-> factor(z, levels = c(1,2), labels=c("NF","F"))
- [1] NF NF F  F  F  NF NF NF F  F 
-Levels: NF F
+x / 1000
+#[1] 2.523 2.551 2.557 2.594 2.600 2.622 2.637 2.637 2.663 2.665
 
-> z <- factor(z, labels=c("NF","F"))
-> levels(z)
-[1] "NF" "F" 
-> nlevels(z)
-[1] 2
+x2 <- x / 1000
+x
+#[1] 2523 2551 2557 2594 2600 2622 2637 2637 2663 2665
+x2
+#[1] 2.523 2.551 2.557 2.594 2.600 2.622 2.637 2.637 2.663 2.665
+
+mean(x)
+#[1] 2604.9
+
+range(x)
+#[1] 2523 2665
+c(min(x), max(x))
+#[1] 2523 2665
+var(x)
+#[1] 2376.767
+
+sum(x)
+#[1] 26049
+sum(x^2)
+#[1] 67876431
+sum(x^2 - mean(x))
+#[1] 67850382
 
 
 ######################################################################
-## Manipulation de variables catégorielles
+## Gestion de variables catï¿½gorielles
 ######################################################################
-> vems <- sample(1:3, 10, replace=TRUE)
-> vems
- [1] 3 2 1 3 3 3 2 2 1 2
+z <- c(1, 1, 2, 2, 2, 1, 1, 1, 2, 2)
+z
+#[1] 1 1 2 2 2 1 1 1 2 2
 
-> vems <- factor(vems, levels=c(1,2,3), 
-                 labels=c("critique","bas","normal"))
-> vems
- [1] normal   bas      critique normal   normal   normal   bas      
- [8] bas critique bas     
-Levels: critique bas normal
+factor(z, levels = c(1,2), labels=c("NF","F"))
+#[1] NF NF F  F  F  NF NF NF F  F 
+#Levels: NF F
 
-> table(vems)
+z <- factor(z, labels=c("NF","F"))
+levels(z)
+#[1] "NF" "F" 
+nlevels(z)
+#[1] 2
+
+
+######################################################################
+## Manipulation de variables catï¿½gorielles
+######################################################################
+vems <- sample(1:3, 10, replace=TRUE)
 vems
-critique      bas   normal 
-       2        4        4 
+#[1] 3 2 1 3 3 3 2 2 1 2
 
-> levels(vems)
-[1] "critique" "bas"      "normal"  
-> levels(vems)[1:2] <- "critique ou bas"
-> levels(vems)
-[1] "critique ou bas" "normal"         
-> table(vems)
+vems <- factor(vems, levels=c(1,2,3), 
+               labels=c("critique","bas","normal"))
 vems
-critique ou bas          normal 
-              6               4 
+#[1] normal   bas      critique normal   normal   normal   bas      
+#[8] bas critique bas     
+#Levels: critique bas normal
+
+table(vems)
+vems
+#critique      bas   normal 
+#2        4        4 
+
+levels(vems)
+#[1] "critique" "bas"      "normal"  
+levels(vems)[1:2] <- "critique ou bas"
+levels(vems)
+#[1] "critique ou bas" "normal"         
+table(vems)
+#critique ou bas          normal 
+#8               2 
+vems
+#[1] critique ou bas normal          normal          critique ou bas
+#[5] critique ou bas critique ou bas critique ou bas critique ou bas
+#[9] critique ou bas critique ou bas
+#Levels: critique ou bas normal
+
+######################################################################
+## Sï¿½lection indexï¿½e d'observations
+######################################################################
+x[c(3,5)]
+#[1] 2557 2600
+
+x[3:5]
+#[1] 2557 2594 2600
+
+vems[2]
+#[1] normal
+#Levels: critique ou bas normal
+
+######################################################################
+## Sï¿½lection critï¿½riï¿½e d'observations
+######################################################################
+x[y < 50]
+#[1] 2557 2594 2600 2637
+
+y < 50
+#[1] FALSE FALSE  TRUE  TRUE  TRUE FALSE FALSE  TRUE FALSE FALSE
+
+x[z == "NF"]
+#[1] 2523 2551 2622 2637 2637
+
+x[z == "NF" & y <= 55]
+#[1] 2637 2637
 
 
 ######################################################################
-## Sélection indexée d'observations
+## Reprï¿½sentation et traitement des valeurs manquantes
 ######################################################################
-> x[c(3,5)]
-[1] 2557 2600
+c(2523, 2551, NA, 2594, 2600, 2622, 2637, 2637, 2663, 2665)
 
-> x[3:5]
-[1] 2557 2594 2600
+x[3] <- NA
+x
+#[1] 2523 2551   NA 2594 2600 2622 2637 2637 2663 2665
 
-> vems[2]
-[1] critique ou bas
-Levels: critique ou bas normal
+is.na(x)
+#[1] FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+which(is.na(x))
+#[1] 3
 
+complete.cases(x)
+#[1]  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
 
-######################################################################
-## Sélection critériée d'observations
-######################################################################
-> x[y < 50]
-[1] 2557 2594 2600 2637
-
-> y < 50
- [1] FALSE FALSE  TRUE  TRUE  TRUE FALSE FALSE  TRUE FALSE FALSE
-
-> x[z == "NF"]
-[1] 2523 2551 2622 2637 2637
-
-> x[z == "NF" & y <= 55]
-[1] 2637 2637
+y[complete.cases(x)]
+#[1] 82.7 70.5 49.1 48.6 56.4 53.6 46.8 55.9 51.4
 
 
 ######################################################################
-## Représentation et traitement des valeurs manquantes
+## Donnï¿½es univariï¿½es
 ######################################################################
-> c(2523, 2551, NA, 2594, 2600, 2622, 2637, 2637, 2663, 2665)
+#2523 2551 2557 2594 2600 2622 2637 2637 2663 2665
+weight <- c(2523, 2551, 2557, 2594, 2600, 2622, 2637, 2637, 2663, 2665)
+write.table(weight, file="poids.dat", row.names = FALSE,col.names = FALSE)
 
-> x[3] <- NA
-> x
- [1] 2523 2551   NA 2594 2600 2622 2637 2637 2663 2665
-
-> is.na(x)
- [1] FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-> which(is.na(x))
-[1] 3
-
-> complete.cases(x)
- [1]  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
-
-> y[complete.cases(x)]
-[1] 82.7 70.5 49.1 48.6 56.4 53.6 46.8 55.9 51.4
+x <- scan("poids.dat")
+#Read 10 items
+head(x, n=3)
+#[1] 2523 2551 2557
 
 
 ######################################################################
-## Données univariées
+## Donnï¿½es multivariï¿½es
 ######################################################################
-2523 2551 2557 2594 2600 2622 2637 2637 2663 2665
+bw <- list(c(0,0,0),c(19,33,20),c(182,155,105),c(2,3,1),c(0,0,1),c(0,0,0),c(0,0,0),c(1,0,0),c(0,3,1),c(2523,2551,2557))
 
-> x <- scan("poids.dat")
-Read 10 items
-> head(x, n=3)
-[1] 2523 2551 2557
+write.table(bw,file = "birthwt.dat", row.names = FALSE, col.names = FALSE)
 
+bt <- read.table("birthwt.dat", header=FALSE)
+varnames <- c("low","age","lwt","race","smoke","ptl","ht", "ui","ftv","bwt")
+names(bt) <- varnames
+head(bt)
+#low age lwt race smoke ptl ht ui ftv  bwt
+#1   0  19 182    2     0   0  0  1   0 2523
+#2   0  33 155    3     0   0  0  0   3 2551
+#3   0  20 105    1     1   0  0  0   1 2557
+
+#0,19,182,2,0,0,0,1,0,2523
+#0,33,155,3,0,0,0,0,3,2551
+#0,20,105,1,1,0,0,0,1,2557
+#bw <- list(
+#  c(0, 19, 182, 2, 0, 0, 0, 1, 0, 2523),
+#  c(0, 33, 155, 3, 0, 0, 0, 0, 3, 2551),
+#  c(0, 20, 105, 1, 1, 0, 0, 0, 1, 2557)
+#)
 
 ######################################################################
-## Données multivariées
+## Sauvegarde de donnï¿½es dans un fichier externe
 ######################################################################
-0 19 182 2 0 0 0 1 0 2523
-0 33 155 3 0 0 0 0 3 2551
-0 20 105 1 1 0 0 0 1 2557
-
-> bt <- read.table("birthwt.dat", header=FALSE)
-> varnames <- c("low","age","lwt","race","smoke","ptl","ht", 
-                "ui","ftv","bwt")
-> names(bt) <- varnames
-> head(bt)
-  low age lwt race smoke ptl ht ui ftv  bwt
-1   0  19 182    2     0   0  0  1   0 2523
-2   0  33 155    3     0   0  0  0   3 2551
-3   0  20 105    1     1   0  0  0   1 2557
-4   0  21 108    1     1   0  0  1   2 2594
-5   0  18 107    1     1   0  0  1   0 2600
-6   0  21 124    3     0   0  0  0   0 2622
-
-0,19,182,2,0,0,0,1,0,2523
-0,33,155,3,0,0,0,0,3,2551
-0,20,105,1,1,0,0,0,1,2557
+write.csv(bt, file="bt.csv")
 
 
 ######################################################################
-## Sauvegarde de données dans un fichier externe
+## Construction d'un tableau structurï¿½ de donnï¿½es
 ######################################################################
-> write.csv(bt, file="bt.csv")
+d <- data.frame(x, y, z)
+names(d) <- c("poids.bÃ©bÃ©", "poids.mÃ¨re", "cig.mÃ¨re")
+head(d, n=3)
+#poids.bï¿½bï¿½ poids.mï¿½re cig.mï¿½re
+#1       2523       82.7       NF
+#2       2551       70.5       NF
+#3       2557       47.7        F
 
+d[1,]
+#poids.bï¿½bï¿½ poids.mï¿½re cig.mï¿½re
+#1       2523       82.7       NF
 
-######################################################################
-## Construction d'un tableau structuré de données
-######################################################################
-> d <- data.frame(x, y, z)
-> names(d) <- c("poids.bébé", "poids.mère", "cig.mère")
-> head(d, n=3)
-  poids.bébé poids.mère cig.mère
-1       2523       82.7       NF
-2       2551       70.5       NF
-3       2557       47.7        F
-
-> d[1,]
-  poids.bébé poids.mère cig.mère
-1       2523       82.7       NF
-
-> d[c(1,2), 2]
-[1] 82.7 70.5
-
+d[c(1,2), 2]
+#[1] 82.7 70.5
 
 ######################################################################
-## Les données birthwt
+## Les donn?es birthwt
 ######################################################################
 > data(birthwt, package="MASS")
 > c(nrow(birthwt), ncol(birthwt))
@@ -299,7 +302,7 @@ Read 10 items
 > x <- scan("dosage.txt")
 
 Error in scan(file, what, nmax, sep, dec, quote, skip, nlines, : 
-  scan() attendait 'a real' et a reçu '2,914'
+  scan() attendait 'a real' et a re?u '2,914'
 
 > x <- scan("dosage.txt", what="character")
 > str(x)
